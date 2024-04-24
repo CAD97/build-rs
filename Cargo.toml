@@ -1,0 +1,14 @@
+[package]
+name = "build-rs"
+version = "0.2.0"
+edition = "2021"
+rust-version = "1.70"
+publish = false
+
+[features]
+
+## Experimental API. This feature flag is **NOT** semver stable.
+unstable = []
+
+[workspace]
+members = ["test-lib"]
