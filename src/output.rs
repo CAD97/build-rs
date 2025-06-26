@@ -14,9 +14,9 @@ use std::{ffi::OsStr, fmt::Display, fmt::Write, path::Path, str};
 
 fn emit(directive: &str, value: impl Display) {
     if allow_use::double_colon_directives() {
-        println!("cargo::{}={}", directive, value);
+        println!("cargo::{directive}={value}");
     } else {
-        println!("cargo:{}={}", directive, value);
+        println!("cargo:{directive}={value}");
     }
 }
 
@@ -96,7 +96,7 @@ pub fn rustc_link_arg_bin(bin: &str, flag: &str) {
     if flag.contains([' ', '\n']) {
         panic!("cannot emit rustc-link-arg-bin: invalid flag {flag:?}");
     }
-    emit("rustc-link-arg-bin", format_args!("{}={}", bin, flag));
+    emit("rustc-link-arg-bin", format_args!("{bin}={flag}"));
 }
 
 /// The `rustc-link-arg-bins` instruction tells Cargo to pass the
@@ -401,7 +401,7 @@ pub fn metadata(key: &str, val: &str) {
     }
 
     if allow_use::double_colon_directives() {
-        emit("metadata", format_args!("{}={}", key, val));
+        emit("metadata", format_args!("{key}={val}"));
     } else {
         emit(key, val);
     }
