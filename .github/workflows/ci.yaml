@@ -15,7 +15,7 @@ jobs:
         toolchain: ["stable", "stable 6 months ago"]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
@@ -33,7 +33,7 @@ jobs:
       RUSTDOCFLAGS: -Dwarnings
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@nightly
         with:
@@ -52,7 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Semver checks
         uses: obi1kenobi/cargo-semver-checks-action@v2
         with:
